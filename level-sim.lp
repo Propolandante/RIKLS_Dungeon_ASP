@@ -20,8 +20,8 @@ touch(T2,S2) :- step(T1,S1,T2,S2).
 % you can't touch a wall in any state
 :- sprite(T,wall); touch(T,S).
     
-% you can't touch a trap after picking up the gem
-:- sprite(T,trap); touch(T,S); S > 1.
+% you can't touch a trap unless you're holding the gem
+:- sprite(T,trap); touch(T,S); S != 2.
 
 % the finish tile must be touched in state 3
 completed :- finish(T); touch(T,3).
